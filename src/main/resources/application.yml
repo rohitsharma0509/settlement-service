@@ -1,0 +1,69 @@
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+
+spring:
+  application:
+    name: settlement-service
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+  messages:
+    basename: ValidationMessages
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMPT_PORT}
+    username: ${SMTP_USERNAME}
+    fromemail: ${SMTP_FROMEMAIL}
+    toemail: ${SMTP_TOEMAIL}
+    properties:
+      mail:
+        debug: false
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+secretsPath: ${SECRETS_PATH}
+mongo.dbName: RIDER_SETTLEMENT
+
+amazon:
+  s3:
+    bucket-name: ${AMAZON_S3_BUCKET_NAME}
+
+s1:
+  file:
+    batch:
+      db:
+        sequence:
+          prefix: S1
+
+rider:
+  client:
+    payment-integration-service: ${PAYMENT_INTEGRATION_SERVICE_BASE_PATH}
+    reconciliation-service: ${RECONCILIATION_SERVICE_BASE_PATH}
+    pocket-service: ${POCKET_SERVICE_BASE_PATH}
+    tax-service: ${TAX_SERVICE_BASE_PATH}
+    operation-service: ${OPERATION_SERVICE_BASE_PATH}
+
+kafka:
+  topic: payment-reconciliation-topic
+  consumerGroupId: rider-settlement-service-group
+  noOfConcurrentMessage: 1
+  groupInstanceId: ${HOSTNAME}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health
+  metrics:
+    web:
+      server:
+        auto-time-requests: true

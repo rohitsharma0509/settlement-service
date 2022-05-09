@@ -1,0 +1,45 @@
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/RIDER_SETTLEMENT_TEST?readPreference=primary&appname=MongoDB%20Compass&ssl=false
+      auto-index-creation: true
+    web:
+      pageable:
+        one-indexed-parameters: true
+
+  messages:
+    basename: ValidationMessages
+s1:
+  file:
+    batch:
+      db:
+        sequence:
+          prefix: S1
+
+rider:
+  client:
+    payment-integration-service: https://payment-integration-service.api-dev.riderplatform.com
+    reconciliation-service: https://reconciliation-service.api-dev.riderplatform.com
+    pocket-service: http://localhost:8063
+    tax-service: http://localhost:8063
+
+kafka:
+  topic: payment-reconciliation-topic
+  consumerGroupId: rider-settlement-service-group
+  noOfConcurrentMessage: 10
+  server: localhost:9092
+  groupInstanceId: rider-test
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: INFO
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG

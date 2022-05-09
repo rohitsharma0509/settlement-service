@@ -1,0 +1,15 @@
+---
+# Source: environment/templates/dev2ops-config/deployment/deployment-vars-{{env}}.yml
+# This file was generated at  using generator Version: 
+
+DEPLOYMENT:
+    ENV: dev2
+    NAMESPACE: dev2
+    CONFIG_FILES:
+        - "src/main/resources/config/settlement-service.default.yaml"
+        - "src/main/resources/config/settlement-service.dev2.yaml"
+
+APP:
+    ENVIRONMENT:
+      - KEY: logs.Dir
+        VALUE: "/apps/logs/dev2/settlement-service/"

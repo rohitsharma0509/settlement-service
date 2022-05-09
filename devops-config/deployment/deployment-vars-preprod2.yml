@@ -1,0 +1,29 @@
+---
+# Source: environment/templates/devops-config/deployment/deployment-vars-{{env}}.yml
+# This file was generated at  using generator Version: 
+
+DEPLOYMENT:
+    ENV: preprod2
+    NAMESPACE: preprod2
+    CONFIG_FILES:
+        - "src/main/resources/config/settlement-service.default.yaml"
+        - "src/main/resources/config/settlement-service.preprod2.yaml"
+
+APP:
+    REPLICA: 1
+    HPA:
+      ENABLED: 1
+      MIN_REPLICA: 1
+      MAX_REPLICA: 3
+      CPU_UTILIZATION: 65
+      MEMORY_UTILIZATION: 80
+    CONTAINER:
+      MEMORY:
+        REQUEST: 1Gi
+        LIMIT: 1536Mi
+      CPU:
+        REQUEST: 0.5
+        LIMIT: 1
+    ENVIRONMENT:
+      - KEY: logs.Dir
+        VALUE: "/apps/logs/preprod2/settlement-service/"

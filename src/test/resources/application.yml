@@ -1,0 +1,80 @@
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+spring:
+  application:
+    name: settlement-service
+  profiles:
+    active: local
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/RIDER_SETTLEMENT?readPreference=primary&appname=MongoDB%20Compass&ssl=false
+      auto-index-creation: true
+    web:
+      pageable:
+        one-indexed-parameters: true
+  messages:
+    basename: ValidationMessages
+  mail:
+    host: email-smtp.ap-southeast-1.amazonaws.com
+    port: 587
+    username: AKIASWI3QINMLQV5VPP7
+    fromemail: rohit.sharma@publicissapient.com
+    toemail: rohit.sharma@publicissapient.com
+    properties:
+      mail:
+        debug: false
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+secretsPath: src/test/resources/test-files
+mongo.dbName: RIDER_SETTLEMENT
+
+amazon:
+  s3:
+    bucket-name: reconciliation-service-test
+
+s1:
+  file:
+    batch:
+      db:
+        sequence:
+          prefix: S1
+
+rider:
+  client:
+    payment-integration-service: https://payment-integration-service.api-dev.riderplatform.com
+    reconciliation-service: https://reconciliation-service.api-dev.riderplatform.com
+    pocket-service: http://localhost:8063
+    tax-service: http://localhost:8090
+    operation-service: https://operations-service.apps.dev.riderplatform.com
+
+kafka:
+  topic: payment-reconciliation-topic
+  consumerGroupId: rider-settlement-service-group
+  noOfConcurrentMessage: 10
+  server: localhost:9092
+  groupInstanceId: rider-test
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: INFO
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+
+
+COMPANY: ""
+PROJECT_NAME: ""
+DIST_TRACER_ENDPOINT: ""

@@ -1,0 +1,14 @@
+# Source: environment/templates/testops-config/deployment/deployment-vars-{{env}}.yml
+# This file was generated at  using generator Version: 
+
+DEPLOYMENT:
+    ENV: test
+    NAMESPACE: test
+    CONFIG_FILES:
+        - "src/main/resources/config/settlement-service.default.yaml"
+        - "src/main/resources/config/settlement-service.test.yaml"
+
+APP:
+    ENVIRONMENT:
+      - KEY: logs.Dir
+        VALUE: "/apps/logs/test/settlement-service/"

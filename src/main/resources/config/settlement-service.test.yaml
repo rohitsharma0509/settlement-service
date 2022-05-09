@@ -1,0 +1,4 @@
+PAYMENT_INTEGRATION_SERVICE_BASE_PATH: "http://payment-integration-service.test:8080"
+RECONCILIATION_SERVICE_BASE_PATH: "http://reconciliation-service.test:8080"
+POCKET_SERVICE_BASE_PATH: "http://pocket-service.test:8080"
+TAX_SERVICE_BASE_PATH: "http://tax-service.test:8080"
